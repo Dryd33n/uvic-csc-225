@@ -1,0 +1,231 @@
+\documentclass{article}
+\usepackage[legalpaper, portrait, margin=0.3in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cancel}
+
+\title{CSC225 Assignment 1}
+\author{Dryden Bryson}
+\date{January 10, 2025}
+
+\begin{document}
+
+\maketitle
+\newpage
+\section*{Question 1:}
+\subsection*{a)}
+The way we can arrange 7 programming textbooks on a bookshelf is a permutation problem, we need to compute the amount of possible permuations for 7 distinct objects, which is: 
+$$7!=\boxed{5040}$$
+
+\subsection*{b)}
+Since we have 4 Java Books and 3 C++ books, in order for the programming languages to alternate they must follow the following pattern: $$\text{Java  |  C++  |  Java  |  C++  |  Java  |  C++  |  Java}$$ 
+Thus we need only concern ourselves with the permutations of the Java books and the permuations of the C++ books individually, then we can use the rule of product to find the total number of permutations: $$4! \times 3! = \boxed{144}$$
+
+\subsection*{c)}
+We will treat the C++ books that must be next to each other as a single block, then we use the rule of product for the different permutations of the C++ books within the block and aswell as the permutation of the block and the Java books. Since we have 4 Java books and the one block of C++ books number of Java books and C++ block is 5 and there 3 C++ books so the total number of permutations is: $$5!\times 3!=\boxed{720}$$
+
+\subsection*{d)}
+There are two options for the order of the C++ books then the Java books, either we can have C++ books first or Java books first so we have 2 options, then each of the sets of books can be arranged in which ever way we choose, thus: $$2\times 3! \times 4! = \boxed{288}$$
+
+\newpage
+\section*{Question 2:}
+\subsection*{a)}
+In order to have a hand with exactly 3 spades, we need to choose 3 of 13 possible cards with the suite of spades and 2 cards that are not in the suite of spades, there are $52-13=39$ non space cards so we must choose 2 of those, we will compute all the possible combinations for having the 3 spades and the 2 non spades and combine them using the rule of product:
+\begin{itemize}
+\item Combinations of 3 spade cards $$\begin{pmatrix}
+    13\\3
+\end{pmatrix}=\frac{13!}{3!(13-3)!}=\frac{13!}{3!10!}=\frac{13\times 12\times 11}{3\times 2}=286$$
+
+
+\item Combinations of 2 non spade cards $$\begin{pmatrix}
+    39\\2
+\end{pmatrix}=\frac{39!}{2!(39-2)!}=\frac{39\times 38}{2}=741$$
+\end{itemize}
+And the finally combining them with the rule of product: $$\begin{pmatrix}
+    13\\3
+\end{pmatrix}\begin{pmatrix}
+    39\\2
+\end{pmatrix}=286\times 741=\boxed{211926}$$
+
+\subsection*{b)}
+Like the previous question we calculate the combinations of spade cards and non spade cards and multiply them together, but this time the amount of spade cards can vary between $0,1,2,3$ so we must compute the combinations for each case: 
+\begin{itemize}
+    \item 0 spades:$$\begin{pmatrix}
+        13\\0
+    \end{pmatrix}\begin{pmatrix}
+        39\\5
+    \end{pmatrix}=1\cdot \frac{39!}{5!(34!)}=1\cdot \frac{39\cdot 38\cdot 37\cdot 36\cdot 35}{2\cdot 3\cdot 4\cdot 5}=1\cdot 575,757$$
+
+
+    \item 1 spade card:$$\begin{pmatrix}
+    13\\1
+    \end{pmatrix}\begin{pmatrix}
+        39\\4
+    \end{pmatrix}=\frac{13!}{1!(12)!}\cdot \frac{39!}{4!(35!)}=\frac{13}{1}\cdot \frac{39\cdot 38\cdot 37\cdot 36}{4\cdot 3\cdot 2}=13\cdot 82251=1,069,263$$
+
+    \item 2 spade cards:$$\begin{pmatrix}
+    13\\2
+    \end{pmatrix}\begin{pmatrix}
+        39\\3
+    \end{pmatrix}=\frac{13!}{2!(11)!}\cdot \frac{39!}{3!(36)!}=\frac{13\cdot 12}{2}\cdot \frac{39\cdot 38\cdot 37}{3 \cdot 2}=78 \cdot 9139=712,842$$
+
+    \item 3 spade cards:$$\begin{pmatrix}
+    13\\3
+    \end{pmatrix}\begin{pmatrix}
+        39\\2
+    \end{pmatrix}=\frac{13!}{3!(10)!}\cdot \frac{39!}{2!(37)!}=\frac{13\cdot 12\cdot 11}{3\cdot 2}\cdot \frac{39\cdot 38}{2}=286\cdot 741=211,926$$
+\end{itemize}
+Now with each case computed we simply compute them all using the rule of product: $$575,757+1,069,263+712,842+211,926=\boxed{2,569,788}$$
+\subsection*{c)}
+We simply need to count the combinations of 2 spades that can exists and the combination of 3 hearts that can exist and then combine them using the rule of product, so we have: $$\begin{pmatrix}
+    13\\2
+\end{pmatrix}\cdot \begin{pmatrix}
+    13\\3
+\end{pmatrix}=\frac{13!}{2!(11!)}\cdot \frac{13!}{3!(10)!}=\frac{13\cdot 12}{2}\cdot \frac{13\cdot 12\cdot 11}{3\cdot 2}=78\cdot 286=\boxed{22308}$$
+\subsection*{d)}
+We will compute the combinations for each of the below cases and then add them using the rule of sum: 
+\begin{itemize}
+    \item One king is in the suit of diamonds and the other is neither spade nor diamonds\\
+    We need to chose the one king of diamonds, one non-king diamond, one non-king spade, one non-diamond-non-spade king and one non-king-non-diamond-non-spade card, thus we have: 
+    $$\begin{pmatrix}
+        1\\1
+    \end{pmatrix}\begin{pmatrix}
+        12\\1
+    \end{pmatrix}\begin{pmatrix}
+        12\\1
+    \end{pmatrix}\begin{pmatrix}
+        2\\1
+    \end{pmatrix}\begin{pmatrix}
+        24\\1
+    \end{pmatrix}=1\cdot 12 \cdot 12 \cdot 2 \cdot 24=6912$$
+    \item One king is in the suit of diamonds and the other is in the suite of spades\\
+    We need to choose the one king of spades, the one king of diamonds, a non-king diamond and 2 non-diamond-non-spade-non-king cards.
+    $$\begin{pmatrix}
+        1\\1
+    \end{pmatrix}\begin{pmatrix}
+        1\\1
+    \end{pmatrix}\begin{pmatrix}
+        12\\1
+    \end{pmatrix}\begin{pmatrix}
+        24\\2
+    \end{pmatrix}=1\cdot 1\cdot 12\cdot \frac{24\cdot 23}{2}=1\cdot 1\cdot 12\cdot 276=3312$$
+    \item One king is in the suit of of spades and the other is neither spade nor diamonds\\
+    We need to choose the one king of spades, 1 non-spade-non-diamonds king, 2 non-king diamonds, and one non-spade-non-diamond-non-king card.$$\begin{pmatrix}
+        1\\1
+    \end{pmatrix}\begin{pmatrix}
+        2\\1
+    \end{pmatrix}\begin{pmatrix}
+        12\\2
+    \end{pmatrix}\begin{pmatrix}
+        24\\1
+    \end{pmatrix}=1\cdot 2\cdot \frac{12\cdot 11}{2}\cdot 24=1\cdot 2\cdot 66\cdot 24=3168$$
+    \item Neither king is in the suit of spades nor diamonds\\
+    We need to choose one non-king spade, 2 non-king diamonds and 2 non-spade-non-diamond kings.$$\begin{pmatrix}
+        12\\1
+    \end{pmatrix}\begin{pmatrix}
+        12\\2
+    \end{pmatrix}\begin{pmatrix}
+        2\\2
+    \end{pmatrix}=12\cdot \frac{12\cdot 11}{2}\cdot 1=12\cdot 66\cdot 1=792$$
+\end{itemize}
+Now with each case computed we simply need to use the rule of sum to find the total number of ways such a hand could be pulled: $$6912+3312+3168+792=\boxed{14184}$$
+
+\newpage
+\section*{Question 3:}
+We preform the following algebraic manipulations: 
+$$\begin{aligned}
+    \begin{pmatrix}
+        n\\2
+    \end{pmatrix}+\begin{pmatrix}
+        n-1\\2
+    \end{pmatrix}&=\frac{n!}{2!(n-2)!}+\frac{(n-1)!}{2!((n-1)-2)!}\\
+    &=\frac{n(n-1)\cancel{(n-2)!}}{2\cancel{(n-2)!}}+\frac{(n-1)(n-2)\cancel{(n-3)!}}{2\cancel{(n-3)!}}\\
+    &=\frac{n(n-1)}{2}+\frac{(n-1)(n-2)}{2}\\
+    &=\frac{n(n-1)+(n-1)(n-2)}{2}\\
+    &=\frac{n^{2}-n+n^{2}-3n+2}{2}\\
+    &=\frac{2n^{2}-4n+2}{2}\\
+    &=\frac{2(n^{2}-2n+1)}{2}\\
+    &=n^{2}-2n+1\\
+    &=(n-1)(n-1)\\
+    &=(n-1)^{2} 
+\end{aligned}$$
+Since $n$ is an integer greater than 2, then $\begin{pmatrix}
+    n\\2
+\end{pmatrix}+\begin{pmatrix}
+    n-1\\2
+\end{pmatrix}=(n-1)^{2}$ is a perfect square since the square root of $(n-1)^{2}$ is the integer $n-1$.
+
+\newpage
+\section*{Question 4:}
+\subsection*{a)}
+To count the number of ways we will use the stars and bars method, we have 20 stars since that is the sum off all $x_{i}$ and 3 bars since it is split into 4 groups. Thus we have 23 elements and we need to choose the arrangement of either the 20 stars or the 3 bars thus we have: $$\begin{pmatrix}
+    23\\3
+\end{pmatrix}=\begin{pmatrix}
+    23\\20
+\end{pmatrix}=\boxed{1771}$$
+
+\subsection*{b)}
+We want to define $y_{1},y_{2},y_{3} \text{ and } y_{4}$ such that they are all greater than or equal to 0 so that we can use the previous method from above. So we will define them from $x_{1},x_{2},x_{3}$ and $x_{4}$ respectively: $$y_{1}=x_{1}-2,\;\;\;\;y_{2}=x_{2}-2,\;\;\;\;y_{3}=x_{3}-1,\;\;\;\;y_{4}=x_{4}-1$$
+Now using the above equations to find substitutions for each $x_{i}$: $$x_{1}=y_{1}+2,\;\;\;\;x_{2}=y_{2}+2,\;\;\;\;x_{3}=y_{3}+1,\;\;\;\;x_{4}=y_{4}+1$$
+Then we can rewrite our equation: $$(y_{1}+2)+(y_{2}+2)+(y_{3}+1)+(y_{4}+1)=20$$
+And simplify: $$y_{1}+y_{2}+y_{3}+y_{4}=14$$
+Now this has been reduced to a simple stars and bars problem where we have 14 stars and 3 bars, so simply we have: $$\begin{pmatrix}
+    17\\3
+\end{pmatrix}=\begin{pmatrix}
+    17\\14
+\end{pmatrix}=\boxed{680}$$
+
+\subsection*{c)}
+Just as the previous question we will define $y_{1},y_{2},y_{3}$ and $y_{4}$ such that they are all greater than or equal to 0: $$y_{1}=x_{1}+1,\;\;\;\;y_{2}=x_{2}+1,\;\;\;\;y_{3}=x_{3}+1,\;\;\;\;y_{4}=x_{4}+1$$
+Now rearranging for each $x_{i}$: $$x_{1}=y_{1}-1,\;\;\;\;x_{2}=y_{2}-1,\;\;\;\;x_{3}=y_{3}-1,\;\;\;\;x_{4}=y_{4}-1$$
+And then we can rewrite our equation: 
+$$(y_{1}-1)+(y_{2}-1)+(y_{3}-1)+(y_{4}-1)=20$$
+And simplify: 
+$$y_{1}+y_{2}+y_{3}+y_{4}=24$$
+Now we have reduced the problem to a simple stars and bars problem where we have 24 stars and 3 bars so simply we have: $$\begin{pmatrix}
+    27\\3
+\end{pmatrix}=\begin{pmatrix}
+    27\\24
+\end{pmatrix}=\boxed{2925}$$
+
+\subsection*{d)}
+To acccomplish this we can start by computing the number of possibilities for the lower bound on $x_{4}$ i.e when $x_{4}\geq 2$. Then we need to subtract the cases that arrise when $x_{4}>7$, lets start with the re-written equation with the lower bound ignoring the upper bound, we have: 
+$$y_{1}+y_{2}+y_{3}+(y_{4}+2)=20$$
+Then simplify: 
+$$y_{1}+y_{2}+y_{3}+y_{4}=18$$
+Then we compute the combinations: $$\begin{pmatrix}
+    21\\3
+\end{pmatrix}=\begin{pmatrix}
+    21\\18
+\end{pmatrix}=1330$$
+Now we need to compute how many invalid cases we have which are the cases where $x_{4}\geq_{8}$, so we have the equation: 
+$$y_{1}+y_{2}+y_{3}+(y_{4}+8)=20$$
+Then we simplify: $$y_{1}+y_{2}+y_{3}+y_{4}=12$$
+And now we can compute the combinations: $$\begin{pmatrix}
+    15\\3
+\end{pmatrix}=\begin{pmatrix}
+    15\\13
+\end{pmatrix}=455$$
+
+Then we just need to subtract the cases that are invalid due to the upper bound from the total cases that where computed with the lower bound in consideration: $$1330-455=875$$
+\newpage
+\section*{Question 5:}
+We will aim to show that the number of possible sums is less than the number of possible subsets, thus demonstrating with the pigeon hole principle that there exists more subsets than unique sums and therefore there must be atleast 2 unique subsets whomst share the same sum.\\\\
+Let us first begin by computing the number of subsets, since the subsets range in cardinality from 1-3, we need to compute the amount of subsets for each case and use the rule of sum to add them together:
+$$\begin{pmatrix}
+    5\\1
+\end{pmatrix}+\begin{pmatrix}
+    5\\2
+\end{pmatrix}+\begin{pmatrix}
+    5\\3
+\end{pmatrix}=5+10+10=25$$\\
+Now we will find the minimum and maximum range of the possible sums, we need only find the smalled at largest possible sum:
+\begin{itemize}
+    \item Smallest Sum:\\The smallest sum is 1 and is given by the set containing the singular element $1$: $$\{1\}$$
+    \item Largest Sum: \\The largest sum is 24 and is given by the set containing the elements: $$\{7,8,9\}$$
+\end{itemize}
+
+Since there are more subsets then there are possible sums then the pigeonhole principle guarantees that atleast two subsets $A$ and $B$ must share the same sum $s_{A}=s_{B}$. $\square$
+
+
+\end{document}
