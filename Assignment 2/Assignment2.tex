@@ -1,0 +1,114 @@
+\documentclass{article}
+\usepackage[legalpaper, portrait, margin=0.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+
+\title{CSC 225 Assignment 2}
+\author{Dryden Bryson}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage
+\section*{Question 1:}
+\subsection*{a)}
+We count the following assignments and comparisons:
+\begin{itemize}
+    \item 1 Assignment on line 1: $\boxed{p \leftarrow 1}$
+    \item For loop, 1 Assignment to initialize $i$: $\boxed{ i \leftarrow 1}$ and 1 comparison to terminate loop
+    \item Within the for loop, $n^{2}+1$ times: \begin{itemize}
+        \item 1 Comparison to check loop condition $\boxed{i\leftarrow 1 \text{ to } n^{2}+1}$ or $\boxed{i\leq n^{2}+1}$
+        \item 1 Assignment to increment $i$, $\boxed{i\leftarrow i+1}$
+        \item 1 Assignment in body of loop $\boxed{p\leftarrow p\cdot i}$
+    \end{itemize}
+\end{itemize}
+This gives us, $1A+1A+1C$ comparisons and assigmnets which occur once and $1C+1A+1A$ which occur $n^{2}+1$ times in the for loop. This gives us the following: $$T_{A\&C}(n)=3+\sum_{i=1}^{n^{2}+1}3$$
+
+\subsection*{b)}
+We count the following assignments and comparisons:
+\begin{itemize}
+    \item 1 Assignment on line 1: $\boxed{s\leftarrow 1}$
+    \item First for loop, 1 Assignment to initialize $i$: $\boxed{i\leftarrow 0}$ and one comparison upon loop termination
+    \item Within first for loop, $n^{2}+1$ times: \begin{itemize}
+        \item 1 Comparison to check loop condition, $\boxed{i\leftarrow 1 \text{ to } n^{2}+1}$ or $\boxed{i\leq n^{2}+1}$
+        \item 1 Assignment to increment $i$, $\boxed{i\leftarrow i+1}$
+        \item Nested for loop, 1 assignment to initialize $j$, $\boxed{j \leftarrow 1}$ and one comparison upon loop termination
+        \item Within nested loop $i$ times, \begin{itemize}
+            \item 1 Comparison to check loop condition $\boxed{j\leftarrow 1} \text{ to } i$ or $\boxed{j\leq i}$
+            \item 1 Assignment to increment $j$, $\boxed{j\leftarrow j+1}$
+            \item 1 Assignment within body of loop: $\boxed{s\leftarrow s + i}$ 
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+This gives us, $1A+1A+1C$ assignments and comparisons which occur once and $1C+1A+1A+1C$ within the first loop occuring $n^{2}+1$ times and within that loop $1C+1A+1A$ which occur $i$ times. This gives us the following: $$T_{A\&C}(n)=3+\sum_{i=0}^{n^{2}+1}\bigg[4+\sum_{j=1}^i 3\bigg]$$
+or equivalently, avoiding nested summations: $$T_{A\&C}(n)=3+\sum_{i=0}^{n^{2}+1}\bigg[4+3i\bigg]$$
+
+\newpage
+\section*{Question 2:}
+\newpage
+\section*{Question 3:}
+Let us first define the following for simplicity:
+\begin{itemize}
+    \item $T(n-1)=T(n-2)+2^{n-1}$
+    \item $T(n-2)=T(n-3)+2^{n-2}$
+    \item $T(n-3)=T(n-4)+2^{n-3}$
+\end{itemize}
+Then we can proceed with the definition of $T(n)$ and make repeated top down substitutions:
+$$\begin{aligned}
+    T(n)&=T(n-1)+2^{n}\\
+    &=T(n-2)+2^{n-1}+2^{n}\\
+    &=T(n-3)+2^{n-2}+2^{n-1}+2^{n}\\
+    &=T(n-4)+2^{n-3}+2^{n-2}+2^{n-1}+2^{n}\\
+\end{aligned}$$
+Thus we can see the pattern that arrises which yeilds the reccurence: $$T(n)=T(0)+2^{1}+2^{2}+2^{3}+\dots+2^{n}$$
+When we apply the base case $T(0)=1$ the equation becomes: $$T(n)=1+\sum_{i=1}^n 2^{i}$$
+Since $\sum_{i=1}^n 2^{i}$ is a geometric series it can be represented by the closed form $\frac{2(2^{n}-1)}{2-1}$ which simplifies to $2(2^{n}-1)$
+Thus we have that: $$T(n)=1+2(2^{n}-1)$$
+
+
+\newpage
+\section*{Question 4:}
+\begin{enumerate}[label=\roman*.]
+  \item \textbf{Basis}\newline
+  We want to show that the statement holds when $n=1$, that is that the given formula we aim to prove yeilds 1 when $n=1$ since $T(1)=1$ is given, when $n=1$: $$\frac{1(1+1)}{2}=\frac{2}{2}=1$$
+  Thus the base case holds.
+  \item \textbf{Inductive Hypothesis}\newline
+  Assume that the frmula holds true for $n>1$ i.e: $$T(n)=\frac{n(n+1)}{2}$$
+  \item \textbf{Inductive Step}\newline
+  We want to show that the statement holds true for $n+1$ so we have that:
+  \begin{table}[htp]
+  \centering
+  \begin{tabular}{ccll}
+    $T(n+1)$ &  $=$ & $T(n)+(n+1)$  &  From the given reccurence relation \\
+             &  $=$ & $\frac{n(n+1)}{2}+(n+1)$ & From the Inductive Hypothesis \\
+             &  $=$ & $\frac{n(n+1)}{2}+\frac{2(n+1)}{2}$ & \\
+             &  $=$ & $\frac{n(n+1)+2(n+1)}{2}$&  \\
+             &  $=$ & $\frac{(n+1)(n+2)}{2}$& Factor $(n+1)$ \\
+  \end{tabular}
+  \end{table}
+  The above matches the formula we aim to prove when $n+1$ or that $T(n+1)=\frac{(n+1)(n+2)}{2}$.
+
+  \item \textbf{Conclusion}\newline
+  By induction, $T(n)=\frac{n(n+1)}{2}$ holds for all $n\geq 1$
+\end{enumerate}
+
+
+\newpage
+\section*{Question 5:}
+\textbf{Loop Invariant Proof:}\\
+\textit{Loop Invariant:} Throughout the loop it is true that at all times the variable sum holds the sum of the first $k$ elements of the array.
+
+\begin{enumerate}[label=\roman*.]
+  \item \textbf{Initialization}\newline
+        Before the loop starts $k=1$, and $\text{sum}\leftarrow \text{A}[0]$, which is indeed the sum of the first $k=1$ elements of A thus the loop invariant holds.
+  \item \textbf{Maintenance}\newline
+        We assume that the invariant holds at the start of an interation, that is that sum holds the sum of the first $k-1$ elements. During the loop the value of the $k$'th element of A is added to sum so the loop invariant holds since sum now stores the sum of the first $k$ elements.
+  \item \textbf{Termination}\newline    
+        The loop terminantes when $k=n-1$ or once all of the elements of A have been indexed by the loop and added to the sum variable, thus sum holds the sum of the first $k$ elements of the array which at this point is all of the elements in the array, sum is then returned which is exactly the desired output of the algorithm
+\end{enumerate}
+The loop invariant holds true before, during and after every iterations of the loop. Therefore, the algorithm arraySum(A,n) correctly computes the sum of the elements of the array A. $\square$
+
+\end{document}
