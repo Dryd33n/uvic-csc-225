@@ -8,7 +8,7 @@ LaTex files for assignments from UVic CSC 225, Data Structures and Algorithms I.
 - Counting Combinations (Stars and Bars)
 - Pigeonhole Principle
 
-### [Assignment 2](Assignment%202/Assignment2.pdf)
+### [Assignment 2](Assignment%202/Assignment2_Solution.pdf)
 - Counting Alogirthm Effiency
 - Algorithm Design and Efficiency Analysis
 - Top Down Substitution for Recusrive Function Definitions
