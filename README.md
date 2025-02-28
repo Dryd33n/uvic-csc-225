@@ -1,4 +1,4 @@
-# CSC 225
+# <img src="https://github.com/Dryd33n/Dryd33n/blob/main/logos/uvic.png" height="25"> CSC225: Algorithms and Data Structures: I
 LaTex files for assignments from UVic CSC 225, Data Structures and Algorithms I. 
 
 ### [Assignment 1](Assignment%201/Assignment1_Solution.pdf)
