@@ -29,7 +29,7 @@ The function oddEqualTree runs in O(n^2) time complexity. Let us explore why:
         2. (O(1)) Checking to see if the length of the data in the nodes is odd
         3. (O(n)) Recursively calling the function on the left and right children of the nodes
     Which all together simply has O(n) time complexity. Since 4 recursive calls are made all with half the size arrays
-    we have the reccurence relation: T(n) = 4T(n/2)+O(n), T(1) = O(1). Solving this recurrence relation we get O(n^2).
+    we have the recurrence relation: T(n) = 4T(n/2)+O(n), T(1) = O(1). Solving this recurrence relation we get O(n^2).
     Which means the time complexity of the oddEqualTree function is 4. [ O(n^2). ]
 
 1. O(n) +
@@ -45,6 +45,23 @@ import java.io.*;
 import java.util.*;
 
 public class OddEquality {
+
+    public static class TreeNode {
+        int[] data;
+
+        int hash;
+        TreeNode left;
+        TreeNode right;
+
+        public TreeNode(int[] data){
+            this.data = data;
+            this.hash = Arrays.hashCode(data);
+            this.left = null;
+            this.right = null;
+        }
+    }
+
+
     static boolean oddEqual(int[] a, int[] b){
         // Base case: if arrays are equal, return true.
         if (Arrays.equals(a, b)) return true;
