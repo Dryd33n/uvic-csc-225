@@ -17,30 +17,43 @@ the hashed values of the elements in a in the respective nodes in the tree.
         2. (O(1)) Checking to see if length is odd
         3. (O(n)) Splitting the array into two halves using Arrays.copyOfRange,
         4. (O(n)) Hashing the array using Arrays.hashCode, within TreeNode method
-    Which all together simply has O(n) time complexity. Since the recursion depth is log n, similar to the divide step
-    in a merge sort algorithm, the time complexity of the buildTree function is 3. [ O(n log n). ]
+    Which all together simply has O(n) computed at each level of the function. We then make two recursive calls with
+    k=n/2 since we are splitting the arrays in half. This gives us the following recurrence relation: T(n) = 2T(n/2)+O(n),
+    which when solved gives O(n log n) time complexity.
 
 After building the trees, the function compares the two trees to determine if they are oddly equal.
-The function oddEqualTree runs in O(n^2) time complexity. Let us explore why:
+The function oddEqualTree runs in O(n^~1.58) time complexity. Let us explore why:
 
-    Let us explore the reason oddEqualTree is O(n^2)
+    Let us explore the reason oddEqualTree is O(n^~1.58)
         At each level of the function the work done is:
         1. (O(1)) Comparing the hash values of the two nodes
         2. (O(1)) Checking to see if the length of the data in the nodes is odd
-        3. (O(n)) Recursively calling the function on the left and right children of the nodes
-    Which all together simply has O(n) time complexity. Since 4 recursive calls are made all with half the size arrays
-    we have the recurrence relation: T(n) = 4T(n/2)+O(n), T(1) = O(1). Solving this recurrence relation we get O(n^2).
-    Which means the time complexity of the oddEqualTree function is 4. [ O(n^2). ]
+        3. In the worst case three recursive calls are made:
+            - Worst case (1) We perform these 3 calls:
+                - boolean a1b1 = oddEqualTree(a.left, b.left);
+                - boolean a2b2 = oddEqualTree(a.right, b.right);
+                - boolean a1b2 = oddEqualTree(a.left, b.right);
+            - Worst case (2) We perform these 3 calls:
+                - boolean a1b1 = oddEqualTree(a.left, b.left);
+                - boolean a2b2 = oddEqualTree(a.right, b.right);
+                - boolean a2b1 = oddEqualTree(a.right, b.left);
+
+    Thus, in the two worst cases, we do O(1) work at each level and make 3 recursive calls. each with k=n/2 since we are
+    splitting the arrays in half, this gives us the following recurrence relation: T(n) = 3T(n/2)+O(1), T(1) = O(1).
+    Solving this recurrence relation we get O(n^{log_2 (3)}) = O(n^~1.58) time complexity.
+    Which means the time complexity of the oddEqualTree function is 4. [ O(n^~1.58) ]
 
 1. O(n) +
 2. O(1) = O(n) +
 3. O(n log n) = O(n log n) +
-4. O(n^2) = O(n^2)
+4. O(n^~1.58) = O(n^~1.58)
 
-Adding up all the time complexities and simplifying we get O(n^2) which is the time complexity of the oddEqual function.
+Adding up all the time complexities and simplifying we get O(n^~1.58) which is the time complexity of the oddEqual function.
 */
  
  
+import com.sun.source.tree.Tree;
+
 import java.io.*;
 import java.util.*;
 
@@ -94,25 +107,38 @@ public class OddEquality {
     }
 
     static Boolean oddEqualTree(TreeNode a, TreeNode b){
-        // compare the two trees a and b to determine if they are oddly equal
-        if(a.hash == b.hash) {
-            return true;
-        }
-        if(a.data.length % 2 == 1 || b.data.length % 2 == 1) return false;
+        // <-- BASE CASE (1) -->
+        // if the hash values of the two nodes are equal, return true
+        if(a.hash == b.hash) return true;                                    //O(1)
+        // <-- BASE CASE (2) -->
+        // if the length of the data in the nodes is odd, return false
+        if(a.data.length % 2 == 1 || b.data.length % 2 == 1) return false;   //O(1)
 
-        boolean a1b1 = oddEqualTree(a.left, b.left);
-        boolean a2b2 = oddEqualTree(a.right, b.right);
+        // <-- CONDITION (A) -->
+        // A1~B1 && A2~B2
+        boolean a1b1 = oddEqualTree(a.left, b.left);                         //O(T(n/2))
+        boolean a2b2 = oddEqualTree(a.right, b.right);                       //O(T(n/2))
         if(a1b1 && a2b2) return true;
 
-        boolean a1b2 = oddEqualTree(a.left, b.right);
-        if (a1b1 && a1b2) return true;
+        // <-- CONDITION (B) -->
+        // A1~B1 && A1~B2
+        if (a1b1) {
+            boolean a1b2 = oddEqualTree(a.left, b.right);                    //O(T(n/2))
+            // A1~B1 is already true if this code is being executed thus we are checking A1~B1 && A1~B2
+            if (a1b2) return true;
+        }
 
-        boolean a2b1 = oddEqualTree(a.right, b.left);
-        if (a2b1 && a2b2) return true;
+        // <-- CONDITION (C) -->
+        // A2~B1 && A2~B2
+        if(a2b2) {
+            boolean a2b1 = oddEqualTree(a.right, b.left);                     //O(T(n/2))
+            // A2~B2 is already true if this code is being executed thus we are checking A2~B1 && A2~B2
+            if (a2b1) return true;
+        }
+
 
         return false;
     }
-
 
 
     public static void main(String[] args) {
