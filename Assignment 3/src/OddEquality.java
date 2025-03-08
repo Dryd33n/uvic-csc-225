@@ -1,7 +1,7 @@
 /* 
  * CSC 225 - Assignment 3
- * Name: 
- * Student number:
+ * Name:           Dryden Bryson
+ * Student number: V01037593
  */
  
 /* 
