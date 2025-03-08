@@ -24,4 +24,4 @@ LaTex files for assignments from UVic CSC 225, Data Structures and Algorithms I.
    - (A<sub>1</sub> is oddly equal to B<sub>1</sub>) AND (A<sub>1</sub> is oddly equal to B<sub>2</sub>)
    - (a<sub>2</sub> is oddly equal to B<sub>1</sub>) AND (A<sub>2</sub> is oddly equal to B<sub>2</sub>)
 
-The goal was too design the algorithm with the least time complexity, the most difficult goal to achieve was having a 𝑂(𝑛<sup>2−𝜀</sup>) where 𝜀 > 0
+- The goal was too design the algorithm with the least time complexity, the most difficult goal to achieve was having a 𝑂(𝑛<sup>2−𝜀</sup>) where 𝜀 > 0
