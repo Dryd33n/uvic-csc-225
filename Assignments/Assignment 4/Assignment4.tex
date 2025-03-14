@@ -434,4 +434,16 @@ $$\begin{aligned}
 We then have the following pattern: $$T(n)=T(n-i)+i(c+2)$$
 Solving for $i$ we find that $i=n$ and thus our reccurence equation is as follows:$$T(n)=1+n(c+2)$$
 This worst case time complexity falls under the category of $O(n)$
+
+\newpage
+\section*{Question 5:}
+We will proceed with induction:\\\\
+\textbf{Base Case:\\}
+We want to show that $E(T)=I(T)+2n$ when $n=1$ first of all we have that for a tree with $n=1$ meaning one internal node that,
+\begin{itemize}
+    \item $E(t)=2$
+    \item $I(t)=0$
+\end{itemize}
+Thus we have that $I(T)+2n=(0)+2(1)=2$ which is equal to $E(t)$ and henceforth the base case is true for $n=1$\\\\
+\textbf{Inductive Hypothesis:}
 \end{document}
