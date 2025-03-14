@@ -157,6 +157,7 @@
 \subsubsection*{Divide:}
 \begin{center}
     \begin{forest} for tree={
+        edge={->},
         edge path={\noexpand\path[\forestoption{edge}] (\forestOve{\forestove{@parent}}{name}.parent anchor) -- +(0,-12pt)-| (\forestove{name}.child anchor)\forestoption{edge label};}
     }
     [(0)\; \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
@@ -237,16 +238,17 @@
             ] 
         ] 
     ] 
-    ]
+    ]]
     \end{forest}
 \end{center}
 
 \subsubsection*{Merge:}
 \begin{center}
     \begin{forest} for tree={
+        edge={<-},
         grow=north,
         edge path={\noexpand\path[\forestoption{edge}] 
-        (\forestOve{\forestove{@parent}}{name}.parent anchor) -- +(0,+12pt)-| 
+        (\forestOve{\forestove{@parent}}{name}.parent anchor) -- +(0,+15pt)-| 
         (\forestove{name}.child anchor)\forestoption{edge label};
         }
     },
@@ -332,6 +334,104 @@
     \end{forest}
 \end{center}
 
+\newpage
+\section*{Question 2:}
 
+\noindent
+The invariant property we aim to show is true throughout the execution of the loop is as follows: Let \( k \) be the loop iteration counter starting at \( 1 \), then, the subarray of the array \( A \) from indexes \( 0 \) to \( k-1 \) is sorted.
 
+\begin{enumerate}
+    \item \textbf{Initialization} \\\\
+    \begin{minipage}{\linewidth}
+        During initialization \( k = 1 \), and thus the given sorted subarray is the subarray from \( 0 \) to \( 1-1 = 0 \), which is a single element. An array containing a single element is always sorted; thus, the invariant holds throughout initialization.\\
+    \end{minipage}
+    \item \textbf{Maintenance} \\\\
+    \begin{minipage}{\linewidth}
+        We assume that the subarray \( A[0..k-1] \) is sorted, and we assume that the inner loop is correct. We begin by storing the value at \( A[k] \). Then, the inner loop shifts all elements of the subarray \( A[0..k-1] \) that are greater than the stored value of \( A[k] \) to the right once, with \( A[k] \) getting overwritten on the first shift. This leaves a duplicate pair of values after the element that was found to be less than or equal to the stored value from \( A[k] \). Then, \( A[k] \) is inserted in the correct spot of the array after the element that was found to be less than or equal to \( A[k] \). Thus, the subarray \( A[0..k] \) is sorted, and the loop invariant holds during maintenance.\\
+    \end{minipage}
+    \item \textbf{Termination} \\\\
+    \begin{minipage}{\linewidth}
+        Upon termination of the loop, \( k = n-1 \), where \( n \) is the length of the array \( A \). Thus, the subarray \( A[0..n-1] \) is sorted, and the loop invariant holds.
+    \end{minipage}
+\end{enumerate}
+
+\newpage
+\section*{Question 3:}
+\begin{center}
+    \begin{forest} for tree={
+        edge={->},
+        edge path={\noexpand\path[\forestoption{edge}] (\forestOve{\forestove{@parent}}{name}.parent anchor) -- +(0,-12pt)-| (\forestove{name}.child anchor)\forestoption{edge label};}
+    }
+    [$x_{1}<x_{0}$
+        [$x_{2}<x_{1}$, edge label={node[midway,left,font=\scriptsize]{yes}}
+            [$x_{2} < x_{1}$, edge label={node[midway,left,font=\scriptsize]{yes}}
+                [\text{Impossible}, edge label={node[midway,left,font=\scriptsize]{yes}} ]
+                [\text{$S=$ }\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+                    \hline
+                3&2&1\\
+                    \hline
+                \end{tabular}, edge label={node[midway,right,font=\scriptsize]{no}}] ]
+            [$x_{2} < x_{1}$, edge label={node[midway,right,font=\scriptsize]{no}}
+            [\text{$S=$ }\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+                \hline
+            3&1&2\\
+                \hline
+            \end{tabular}, edge label={node[midway,left,font=\scriptsize]{yes}}]
+            [\text{$S=$ }\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+                \hline
+            2&1&3\\
+                \hline
+            \end{tabular}, edge label={node[midway,right,font=\scriptsize]{no}}] ] ]
+        [$x_{2}<x_{0}$,, edge label={node[midway,right,font=\scriptsize]{no}}
+            [$x_{2} < x_{1}$,, edge label={node[midway,left,font=\scriptsize]{yes}}
+            [\text{$S=$ }\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+                \hline
+            2&3&1\\
+                \hline
+            \end{tabular}, edge label={node[midway,left,font=\scriptsize]{yes}}]
+            [ \text{Impossible}, edge label={node[midway,right,font=\scriptsize]{no}}] ]
+            [$x_{2} < x_{1}$,, edge label={node[midway,right,font=\scriptsize]{no}}
+                [\text{$S=$ }\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+                \hline
+            1&3&2\\
+                \hline
+            \end{tabular}, edge label={node[midway,left,font=\scriptsize]{yes}}]
+            [\text{$S=$ }\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+                \hline
+            1&2&3\\
+                \hline
+            \end{tabular}, edge label={node[midway,right,font=\scriptsize]{no}}] 
+            ] 
+        ] 
+    ] 
+    ]]
+    \end{forest}
+\end{center}
+
+\newpage
+\section*{Question 4:}
+\text{We count the following primitive operations:}
+\begin{itemize}
+    \item 1 primary operation calling \boxed{T.isInternal(v)}
+    \item c primary operations calling \boxed{processNode(v)}
+    \item T(n-1) primary operations calling \boxed{preorder(T,T.leftChild(v))}
+    \item 1 primary operation checking if \boxed{T.isInternal(v)} when calling \boxed{preorder(T,T.rightChild(v))}
+\end{itemize}
+Here I have not counted method calls as operations as the question seems to specifiy only counting the operations of T.isInternal(v) and proccessNode(v), thus the recurrence equation is:
+$$T(n) = T(n-1)+c+2,\;\;\;\;T(0)=1$$
+To find the closed form of this equation we will first compute:
+\begin{itemize}
+    \item $T(n-1)=T(n-2) + c + 2$
+    \item $T(n-2)=T(n-3) + c + 2$
+    \item $T(n-3)=T(n-4) + c + 2$
+\end{itemize}
+Then perform the following substitutions:
+$$\begin{aligned}
+    T(n)&=T(n-1)+(c+2)\\
+    &=T(n-2)+(c+2)+(c+2)=T(n-2)+2(c+2)\\
+    &=T(n-3)+(c+2)+(c+2)+(c+2)=T(n-3)+3(c+2)\\
+\end{aligned}$$
+We then have the following pattern: $$T(n)=T(n-i)+i(c+2)$$
+Solving for $i$ we find that $i=n$ and thus our reccurence equation is as follows:$$T(n)=1+n(c+2)$$
+This worst case time complexity falls under the category of $O(n)$
 \end{document}
