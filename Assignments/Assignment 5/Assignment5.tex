@@ -1,0 +1,569 @@
+\documentclass{article}
+\usepackage{amsmath, forest, adjustbox}
+\usepackage{float}
+\usepackage[legalpaper, portrait, margin=0.5in]{geometry}
+
+\title{CSC-225 Assignment 5}
+\author{Dryden Bryson}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{Question 1:}
+\subsection*{Insertions:}
+\begin{table}[htp]
+    \centering
+    \begin{tabular}{cccccc}
+        \textbf{(1) Insert 2:}&\textbf{(2) Insert 5:}&\textbf{(3) Insert 16:}&\textbf{(4) Insert 4:}&\textbf{(5) Insert 10:}&\textbf{(6) Insert 23:}\\
+        
+        \begin{minipage}[t]{1.5cm}
+            \vfill
+            \begin{forest} for tree={circle, draw, l=1.5cm}
+                [2
+                ] 
+            \end{forest}
+        \end{minipage}&
+        
+        \begin{minipage}[t]{1.5cm}
+            \vfill
+            \begin{forest} for tree={circle, draw, l=1.5cm}
+                [2
+                [5][, no edge, draw=none]
+                ] 
+            \end{forest}
+        \end{minipage}&
+    
+        \begin{minipage}[t]{1.5cm}
+            \vfill
+            \begin{forest} for tree={circle, draw, l=1.5cm}
+                [2
+                [5]
+                [16]
+                ] 
+            \end{forest}
+        \end{minipage}&
+    
+        \begin{minipage}[t]{1.5cm}
+            \vfill
+            \begin{forest} for tree={circle, draw, l=1.5cm}
+                [2
+                [4[5][, no edge, draw=none]]
+                [16]
+                ] 
+            \end{forest}
+        \end{minipage}&
+    
+        \begin{minipage}[t]{1.5cm}
+            \vfill
+            \begin{forest} for tree={circle, draw, l=1.5cm}
+                [2
+                [4[5][10]]
+                [16]
+                ] 
+            \end{forest}
+        \end{minipage}&
+    
+        \begin{minipage}[t]{1.5cm}
+            \vfill
+            \begin{forest} for tree={circle, draw, l=1.5cm}
+                [2
+                [4[5][10]]
+                [16[23][, no edge, draw=none]]
+                ] 
+            \end{forest}
+        \end{minipage}\\
+    \end{tabular}
+    \end{table}
+    
+    \begin{table}[htp]
+    \centering
+    \begin{tabular}{cccc}
+        \textbf{(7) Insert 39:}&\textbf{(8) Insert 18:}&\textbf{(9) Insert 26:}&\textbf{(10) Insert 15:}\\
+        
+        \begin{minipage}[t]{4cm}
+            \vfill
+            \begin{forest} for tree={circle, draw, l=1.5cm}
+                [2
+                [4[5][10]]
+                [16[23][39]]
+                ] 
+            \end{forest}
+        \end{minipage}&
+    
+        \begin{minipage}[t]{4cm}
+            \vfill
+            \begin{forest} for tree={circle, draw, l=1.5cm}
+                [2
+                [4[5[18][, no edge, draw=none]][10]]
+                [16[23][39]]
+                ] 
+            \end{forest}
+        \end{minipage}&
+    
+        \begin{minipage}[t]{4cm}
+            \vfill
+            \begin{forest} for tree={circle, draw, l=1.5cm}
+                [2
+                [4[5[18][26]][10]]
+                [16[23][39]]
+                ] 
+            \end{forest}
+        \end{minipage}&
+    
+        \begin{minipage}[t]{4cm}
+            \vfill
+            \begin{forest} for tree={circle, draw, l=1.5cm}
+                [2
+                [4[5[18][26]][10[15][, no edge, draw=none]]]
+                [16[23][39]]
+                ] 
+            \end{forest}
+        \end{minipage}\\
+    \end{tabular}
+    \end{table}
+    \subsection*{Removals}
+    \begin{table}[htp]
+    \centering
+    \begin{tabular}{cccc}
+        \textbf{(11) Remove 2:}&\textbf{(12) Remove 4:}&\textbf{(13) Remove 5:}&\textbf{(14) Remove 10:}\\
+        
+        \begin{minipage}[t]{4cm}
+            \vfill
+            \begin{forest} for tree={circle, draw, l=1.5cm}
+                [4
+                [5[15[18][26]][10]]
+                [16[23][39]]
+                ] 
+            \end{forest}
+        \end{minipage}&
+    
+        \begin{minipage}[t]{4cm}
+            \vfill
+            \begin{forest} for tree={circle, draw, l=1.5cm}
+                [5
+                [10[15[18][, no edge, draw=none]][26]]
+                [16[23][39]]
+                ] 
+            \end{forest}
+        \end{minipage}&
+    
+        \begin{minipage}[t]{4cm}
+            \vfill
+            \begin{forest} for tree={circle, draw, l=1.5cm}
+                [10
+                [15[18][26]]
+                [16[23][39]]
+                ] 
+            \end{forest}
+        \end{minipage}&
+    
+        \begin{minipage}[t]{4cm}
+            \vfill
+            \begin{forest} for tree={circle, draw, l=1.5cm}
+                [15
+                [18[39][26]]
+                [16[23][, no edge, draw=none]]
+                ] 
+            \end{forest}
+        \end{minipage}
+    \end{tabular}
+    \end{table}
+
+
+\noindent\parbox{\textwidth}{
+\centering
+\begin{tabular}{cccccc}
+    \textbf{(15) Remove 15:}&\textbf{(16) Remove 16:}&\textbf{(17) Remove 18:}&\textbf{(18) Remove 23:}&\textbf{(19) Remove 26:}&\textbf{(20) Remove 39:}\\
+    
+    \begin{minipage}[t]{1.5cm}
+        \vfill
+        \begin{forest} for tree={circle, draw, l=1.5cm}
+            [16
+            [18[39][26]]
+            [23]
+            ] 
+        \end{forest}
+    \end{minipage}&
+    
+    \begin{minipage}[t]{1.5cm}
+        \vfill
+        \begin{forest} for tree={circle, draw, l=1.5cm}
+            [18
+            [26[39][, no edge, draw=none]]
+            [23]
+            ] 
+        \end{forest}
+    \end{minipage}&
+    
+    \begin{minipage}[t]{1.5cm}
+        \vfill
+        \begin{forest} for tree={circle, draw, l=1.5cm}
+            [23
+            [26]
+            [39]
+            ] 
+        \end{forest}
+    \end{minipage}&
+
+    \begin{minipage}[t]{1.5cm}
+        \vfill
+        \begin{forest} for tree={circle, draw, l=1.5cm}
+            [26
+            [39]
+            [, no edge, draw=none] 
+            ] 
+        \end{forest}
+    \end{minipage}&
+    
+    \begin{minipage}[t]{1.5cm}
+        \vfill
+        \begin{forest} for tree={circle, draw, l=1.5cm}
+            [39
+            ] 
+        \end{forest}
+    \end{minipage}
+\end{tabular}
+}
+
+\newpage
+\section*{Question 2:}
+
+\begin{table}[htp]
+    \centering
+    \begin{tabular}{cccccc}
+      \textbf{(1) Insert 19:} & \textbf{(2) Insert 5:}  & \textbf{(3) Insert 1:}  &  \textbf{(4) Insert 18:}& \textbf{(5) Insert 3:} & \textbf{(6) Insert 8:}\\
+      \begin{minipage}[t]{1.5cm}
+        \vfill
+      $\begin{array}{|c|}
+        \hline
+        19 \\
+        \hline
+      \end{array} $
+    \end{minipage}&
+      \begin{minipage}[t]{1.5cm}
+        \vfill
+      $\begin{array}{|c|c|}
+        \hline
+        5&19 \\
+        \hline
+      \end{array} $
+    \end{minipage}
+      &\begin{minipage}[t]{1.5cm}
+        \vfill
+        \begin{forest} for tree={}
+            [$\begin{array}{|c|}
+        \hline
+        5 \\
+        \hline
+      \end{array} $
+            [$\begin{array}{|c|}
+        \hline
+        1 \\
+        \hline
+      \end{array} $]
+            [$\begin{array}{|c|}
+        \hline
+        19 \\
+        \hline
+      \end{array} $]
+            ] 
+        \end{forest}
+    \end{minipage} &\begin{minipage}[t]{2.5cm}
+        \vfill
+        \begin{forest} for tree={}
+            [$\begin{array}{|c|}
+        \hline
+        5 \\
+        \hline
+      \end{array} $[$\begin{array}{|c|}
+        \hline
+        1 \\
+        \hline
+      \end{array} $][$\begin{array}{|c|c|}
+        \hline
+        18 \;\big\vert\; 19 \\
+        \hline
+      \end{array} $]]
+            ] 
+        \end{forest}
+    \end{minipage} &\begin{minipage}[t]{3.5cm}
+        \vfill
+        \begin{forest} for tree={}
+            [$\begin{array}{|c|}
+        \hline
+        5 \\
+        \hline
+      \end{array} $[$\begin{array}{|c|}
+        \hline
+        1\;\big\vert\; 3 \\
+        \hline
+      \end{array} $][$\begin{array}{|c|c|}
+        \hline
+        18 \;\big\vert\; 19 \\
+        \hline
+      \end{array} $]]
+            ] 
+        \end{forest}
+    \end{minipage} &\begin{minipage}[t]{4cm}
+        \vfill
+        \begin{forest} for tree={}
+            [$\begin{array}{|c|}
+        \hline
+        5\;\big\vert\;18 \\
+        \hline
+      \end{array} $[$\begin{array}{|c|}
+        \hline
+        1\;\big\vert\; 3 \\
+        \hline
+      \end{array} $][$\begin{array}{|c|c|}
+        \hline
+         8 \\
+        \hline
+      \end{array} $][$\begin{array}{|c|c|}
+        \hline
+         19 \\
+        \hline
+      \end{array} $]]
+            ] 
+        \end{forest}
+    \end{minipage} 
+    \end{tabular}
+
+    \noindent\parbox{\textwidth}{
+    \centering
+    \begin{tabular}{cccc}
+      \textbf{(7) Insert 24:} & \textbf{(8) Insert 13:}  & \textbf{(9) Insert 16:}  &  \textbf{(10) Insert 12:} \\
+      \begin{minipage}[t]{4cm}
+        \vfill
+        \begin{forest} for tree={}
+            [$\begin{array}{|c|}
+        \hline
+        5\;\big\vert\;18 \\
+        \hline
+      \end{array} $[$\begin{array}{|c|}
+        \hline
+        1\;\big\vert\; 3 \\
+        \hline
+      \end{array} $][$\begin{array}{|c|c|}
+        \hline
+         8 \\
+        \hline
+      \end{array} $][$\begin{array}{|c|c|}
+        \hline
+         19 \;\big\vert\;24\\
+        \hline
+      \end{array} $]]
+            ] 
+        \end{forest}
+    \end{minipage}  &  \begin{minipage}[t]{3.8cm}
+        \vfill
+        \begin{forest} for tree={}
+            [$\begin{array}{|c|}
+        \hline
+        5\;\big\vert\;18 \\
+        \hline
+      \end{array} $[$\begin{array}{|c|}
+        \hline
+        1\;\big\vert\; 3 \\
+        \hline
+      \end{array} $][$\begin{array}{|c|c|}
+        \hline
+         8\;\big\vert\;13 \\
+        \hline
+      \end{array} $][$\begin{array}{|c|c|}
+        \hline
+         19 \;\big\vert\;24\\
+        \hline
+      \end{array} $]]
+            ] 
+        \end{forest}
+    \end{minipage}  & \begin{minipage}[t]{5cm}
+        \vfill
+        \begin{forest} for tree={}
+            [$\begin{array}{|c|}
+        \hline
+        13 \\
+        \hline
+      \end{array} $[$\begin{array}{|c|}
+        \hline
+        5 \\
+        \hline
+      \end{array} $[$\begin{array}{|c|}
+        \hline
+        1\;\big\vert\;3 \\
+        \hline
+      \end{array} $][$\begin{array}{|c|c|}
+        \hline
+         8\\
+        \hline
+      \end{array} $]][$\begin{array}{|c|c|}
+        \hline
+         18\\
+        \hline
+      \end{array} $[$\begin{array}{|c|}
+        \hline
+        16 \\
+        \hline
+      \end{array} $][$\begin{array}{|c|c|}
+        \hline
+         19\;\big\vert\;24\\
+        \hline
+      \end{array} $]]]
+            ] 
+        \end{forest}
+    \end{minipage}  &  \begin{minipage}[t]{5cm}
+        \vfill
+        \begin{forest} for tree={}
+            [$\begin{array}{|c|}
+        \hline
+        13 \\
+        \hline
+      \end{array} $[$\begin{array}{|c|}
+        \hline
+        5 \\
+        \hline
+      \end{array} $[$\begin{array}{|c|}
+        \hline
+        1\;\big\vert\;3 \\
+        \hline
+      \end{array} $][$\begin{array}{|c|c|}
+        \hline
+         8\;\big\vert\;12\\
+        \hline
+      \end{array} $]][$\begin{array}{|c|c|}
+        \hline
+         18\\
+        \hline
+      \end{array} $[$\begin{array}{|c|}
+        \hline
+        16 \\
+        \hline
+      \end{array} $][$\begin{array}{|c|c|}
+        \hline
+         19\;\big\vert\;24\\
+        \hline
+      \end{array} $]]]
+            ] 
+        \end{forest}
+    \end{minipage}  \\
+    \end{tabular}
+    }
+
+\end{table}
+
+\newpage
+\section*{Question 3:}
+\subsection*{$n=2$}
+\begin{center}
+    \hfill
+    \hfill
+    \hfill
+    \hfill    
+    \begin{minipage}{0.4\textwidth}
+    \begin{forest}
+      for tree={
+        circle, draw,
+        l=1.5cm,
+        if level=0{text=white}{}
+      }
+      [A
+        [A, text=white]
+        [, no edge, draw=none]  
+        [, no edge, draw=none]  
+      ]
+    \end{forest}
+    \end{minipage}%
+    \hfill % Adds flexible horizontal space
+    \begin{minipage}{0.4\textwidth}
+    \begin{forest}
+      for tree={
+        circle, draw,
+        l=1.5cm,
+        if level=0{ text=white}{}
+      }
+      [A
+        [, no edge, draw=none]
+        [, no edge, draw=none]  
+        [A,  text=white]
+      ]
+    \end{forest}
+    \end{minipage}
+    \hfill
+    \end{center}
+
+\subsection*{$n=3$}
+\begin{center}
+    \hfill 
+    \begin{minipage}{0.3\textwidth}
+        \begin{forest}
+            for tree={
+              circle, draw,
+              l=1.5cm,
+              if level=0{fill=black, text=white}{}
+            }
+            [
+              [, fill=red, text=white]
+              [, fill=red, text=white]
+            ]
+          \end{forest}
+    \end{minipage}%
+    \hfill % Adds flexible horizontal space
+    \begin{minipage}{0.3\textwidth}
+        \begin{forest}
+            for tree={
+              circle, draw,
+              l=1.5cm,
+              if level=0{fill=black, text=white}{}
+            }
+            [
+              [, fill=red, text=white
+                [, fill=black, text=white]
+                [, no edge, draw=none]
+                [, no edge, draw=none]
+              ]
+              [, no edge, draw=none]
+              [, no edge, draw=none]
+            ]
+          \end{forest}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \begin{forest}
+            for tree={
+              circle, draw,
+              l=1.5cm,
+              if level=0{fill=black, text=white}{}
+            }
+            [
+                [, no edge, draw=none]
+            [, no edge, draw=none]
+                [, fill=red, text=white
+                [, no edge, draw=none]
+                [, no edge, draw=none]
+                [, fill=black, text=white]
+            ]
+            ]
+          \end{forest}
+    \end{minipage}
+    \hfill
+    \end{center}
+
+\newpage
+\section*{Question 4:}
+
+\newpage
+\section*{Question 5:}
+\subsection*{a)}
+The graph has 9 total edges and a spanning subgraph is a graph which includes all vertices with any subset of edges thus we want to calculate the cardinality of the power set of the set of all edges where each edge either exists or doesn't which is: $$2^{9} = 512$$
+
+\subsection*{b)}
+The graph has contains one 3-cycle which we can remove one edge from and all vertices will still remain accesible, otherwise all other edges are neccesary and must be kept, this means we can either remove 0 edges or any 1 of the 3 edges in the 3-cycle giving us a total of $$4$$connected spanning subgraphs.
+
+\subsection*{c)}
+To count the number of spanning subgraphs which have $0$ as an isolated subgraph we can imagine the graph as if $0$ where not connected and compute the amount of spanning subgraphs normally, this works since for $0$ to be isolated it must not have any edges connecting to this so we assume the 3 edges that connect to it are not part of the powerset of the set of all edges, thus there exists: $$2^{5}=32$$spanning subgraphs where the vertex $0$ is isolated. 
+
+
+\end{document}
