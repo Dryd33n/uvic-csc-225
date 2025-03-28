@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{amsmath, forest, adjustbox}
+\usepackage{amsmath, amssymb, forest, adjustbox}
 \usepackage{float}
 \usepackage[legalpaper, portrait, margin=0.5in]{geometry}
 
@@ -553,7 +553,27 @@
 
 \newpage
 \section*{Question 4:}
+To prove by induction on $n$ that $2m \leq n^{2}-n$ for all $n\geq 1$ for any simple undirected graph $G=(V,E)$ with $|V|=n$ and $|E|=m$ we will proceed with induction on $n$:
+\subsubsection*{Base Case:}
+For $n=1$ the graph is simply a single vertex with no edges thus $m=0$. We have then that $2m=2\cdot 0=0$ and $n^{2}-n=1-1=0$. Therefore $0\leq 0$, which holds true. 
 
+\subsubsection*{Inducitve Hypothesis:}
+We assume that for any simple undirected graph with $k$ vertices and $m$ edges the following inequality holds true: $$2m\leq k^{2}-k$$
+
+\subsubsection*{Inductive Step:}
+We want to show that for any simple undirected graph with $k+1$ vertices satisfies $2m'\leq(k+1)^{2}-(k+1)$. We will being constructing $G'$ which represents a graph with $k+1$ vertices and $m'$ edges. We will define $m'$ as follows: $$m'=m+c$$Where $c$ is the number of edges which connect to the $k+1$'th vertex in $G'$ we bound $c\leq k$ since the vertex could be connected to all other vertices adding at most $m$ edges.\\ \\
+We then have a simple undirected graph $G'=(V',E')$ where $|V'|=k+1$ and $|E'|=m+c$, we will proceed with the original equation from the inductive hypothesis and make the following substitutions: $$\begin{aligned}
+    2m&\leq k^{2}-k\\
+    2(m'-c)&\leq k^{2}-k\\
+    2m'-2c&\leq k^{2}-k\\
+    2m'&\leq k^{2}-k+2c\\
+    2m'&\leq k^{2}-k+2k\;\;\;\;\;\;\text{Since $c\leq k$ thus $2c\leq 2k$}\\
+    2m'&\leq k^{2}+k\\
+    2m'&\leq (k+1)^{2}-(k+1)\;\;\;\;\;\;\text{Since $(k+1)^{2}-(k+1)=k^{2}+2k+1-k-1=k^{2}+k$}
+\end{aligned}$$
+Thus we have $2m'\leq(k+1)^{2}-(k+1)$ where $m'$ is the number of edges in a simple undirected graph with $k+1$ edges. This shows if the statement holds for $n=k$ it must hold for $n=k+1$.
+\subsubsection*{Conclusion:}
+By induction, the base case $n=1$ holds and if the statement holds for $n=k$ it must hold for $n=k+1$, therefore for all integers $n\geq 1$ any simple undirected graphs with $n$ vertices and $m$ edges: $$2m\leq n^{2}-n$$ $\square$
 \newpage
 \section*{Question 5:}
 \subsection*{a)}
