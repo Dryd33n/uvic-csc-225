@@ -25,3 +25,17 @@ LaTex files for assignments from UVic CSC 225, Data Structures and Algorithms I.
    - (a<sub>2</sub> is oddly equal to B<sub>1</sub>) AND (A<sub>2</sub> is oddly equal to B<sub>2</sub>)
 
 - The goal was too design the algorithm with the least time complexity, the most difficult goal to achieve was having a 𝑂(𝑛<sup>2−𝜀</sup>) where 𝜀 > 0
+
+### [Assignment 4](https://github.com/Dryd33n/uvic-csc-225/blob/main/Assignments/Assignment%204/Assignment4.pdf)
+- Sorting Algorithms
+- Proofs involving sorting algorithms
+- Decision trees
+- Constructive proofs
+- Proofs involving trees
+
+### [Assignment 5](https://github.com/Dryd33n/uvic-csc-225/blob/main/Assignments/Assignment%205/Assignment5.pdf)
+- Heapsort
+- 2-3 Trees
+- Left Leaning Red Black Trees
+- Proofs involving graphs
+- Graph analysis
