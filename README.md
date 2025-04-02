@@ -16,7 +16,7 @@ LaTex files for assignments from UVic CSC 225, Data Structures and Algorithms I.
 - Loop Invariant Proofs
 
 
-### [Assignment 3](https://github.com/Dryd33n/uvic-csc-225/tree/main/Assignments/Assignment%203/src)
+### [Assignment 3](https://github.com/Dryd33n/uvic-csc-225/tree/main/Assignments/Assignment%203/src) 80%
 - Design a recursive algorithm to determine if two arrays A and B are oddly equal where oddly equal is defined as, two arrays, A and B, are defined to be oddly equal of one another if at least one of the following two conditions is satisfied:
 1. A = B (the arrays have the same elements at each index)
 2. If 𝒏 is divisible by 2, A and B are divided into two sub-arrays of equal size (A is divided into A<sub>1</sub> and A<sub>2</sub>, B into B<sub>1</sub> and B<sub>2</sub>). Then, at least one of the following conditions is satisfied:
