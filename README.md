@@ -26,7 +26,7 @@ LaTex files for assignments from UVic CSC 225, Data Structures and Algorithms I.
 
 - The goal was too design the algorithm with the least time complexity, the most difficult goal to achieve was having a 𝑂(𝑛<sup>2−𝜀</sup>) where 𝜀 > 0
 
-### [Assignment 4](https://github.com/Dryd33n/uvic-csc-225/blob/main/Assignments/Assignment%204/Assignment4.pdf)
+### [Assignment 4](https://github.com/Dryd33n/uvic-csc-225/blob/main/Assignments/Assignment%204/Assignment4.pdf) 100%
 - Sorting Algorithms
 - Proofs involving sorting algorithms
 - Decision trees
