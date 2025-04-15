@@ -33,7 +33,7 @@ LaTex files for assignments from UVic CSC 225, Data Structures and Algorithms I.
 - Constructive proofs
 - Proofs involving trees
 
-### [Assignment 5](https://github.com/Dryd33n/uvic-csc-225/blob/main/Assignments/Assignment%205/Assignment5.pdf)
+### [Assignment 5](https://github.com/Dryd33n/uvic-csc-225/blob/main/Assignments/Assignment%205/Assignment5.pdf) 70%
 - Heapsort
 - 2-3 Trees
 - Left Leaning Red Black Trees
